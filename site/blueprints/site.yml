@@ -13,7 +13,7 @@ tabs:
           #  Pages
           #
           pages:
-            headline: Campaigns
+            headline: Pages
             type: pages
             create: default
             template: default
