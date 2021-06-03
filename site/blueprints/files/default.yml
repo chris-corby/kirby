@@ -1,0 +1,10 @@
+title: Image
+
+fields:
+  alt:
+    label: Alternative Text
+    type: text
+  caption:
+    label: Caption
+    type: textarea
+    size: medium

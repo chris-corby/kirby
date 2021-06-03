@@ -1,0 +1,21 @@
+title: Error
+
+options:
+  changeStatus: false
+
+columns:
+  - width: 1/1
+    sections:
+      fields:
+        fields:
+          text:
+            label: Text
+            type: textarea
+            size: medium
+            buttons:
+              - bold
+              - italic
+              - link
+              - email
+              - ul
+              - ol

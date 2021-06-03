@@ -1,0 +1,27 @@
+title: Site
+
+tabs:
+  #
+  #  Pages Tab
+  #
+  pages:
+    label: Pages
+    columns:
+      - width: 1/2
+        sections:
+          #
+          #  Pages
+          #
+          pages:
+            headline: Campaigns
+            type: pages
+            create: default
+            template: default
+            empty: No Pages yet
+
+  #
+  #  SEO Tab
+  #
+  seo:
+    extends: tabs/seo
+    label: SEO — fallbacks
