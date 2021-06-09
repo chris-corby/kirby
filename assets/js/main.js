@@ -7,7 +7,7 @@ import 'lazysizes';
 //
 //  Base
 
-// import { keyboardFocus } from './global/keyboardFocus';
+// import { KeyboardFocus } from './global/KeyboardFocus';
 
 //
 //  Components
@@ -45,7 +45,7 @@ function main(error = false) {
   if (error) console.error(error);
 
   //  Run global first
-  // keyboardFocus.init();
+  // KeyboardFocus.init();
 
   //  Then components
   new Component().init();

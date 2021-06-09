@@ -1,6 +1,6 @@
 //  See: https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2
 
-export class keyboardFocus {
+export class KeyboardFocus {
   constructor() {
     this.tabbingAttr = 'data-tabbing';
 
