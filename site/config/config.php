@@ -19,6 +19,23 @@ return [
     ],
   ],
 
+  //  Hooks
+  'hooks' => [
+    //  Assign files with the blueprint specific to their type
+    //  See: https://forum.getkirby.com/t/is-it-possible-to-get-the-file-type-in-blueprint/17683/8
+    'file.create:after' => function ($file) {
+      $type = $file->type();
+
+      if ($type == 'image') {
+        $file->update(['template' => 'image']);
+      } elseif ($type == 'audio') {
+        $file->update(['template' => 'audio']);
+      } elseif ($type == 'video') {
+        $file->update(['template' => 'video']);
+      }
+    }
+  ],
+
   //  Cache
   //  See: https://getkirby.com/docs/guide/cache
   'cache' => [
