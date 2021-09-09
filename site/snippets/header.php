@@ -50,6 +50,12 @@ $meta_image_file = $meta_image->toFile();
     <!-- <link href="//www.wikipedia.org" rel="dns-prefetch"> -->
 
     <?php
+    //  Preload
+    //  TODO:
+    ?>
+    <!-- <link rel="preload" href="<?= $site->url() ?>/assets/fonts/font.woff2" as="font" type="font/woff2" crossorigin> -->
+
+    <?php
     //  CSS
     //  Timestamp for better cache-busting
     ?>
