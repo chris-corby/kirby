@@ -1,5 +1,4 @@
-//  Requires a sizing element and applied styles
-//  See _base.scss for the corresponding breakpoint
+//  ! Requires corresponding styles to work
 
 export function noScroll(stopScrolling = true) {
   const html = document.documentElement;
@@ -18,6 +17,9 @@ export function noScroll(stopScrolling = true) {
     html.style.top = '';
 
     //  Scroll back to the previous position
-    window.scrollTo(0, scrollPosition);
+    //  Only if there is a position to move back to
+    if (scrollPosition !== null) {
+      window.scrollTo(0, scrollPosition);
+    }
   }
 }
