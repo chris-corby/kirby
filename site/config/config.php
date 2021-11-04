@@ -4,6 +4,9 @@ return [
   //  Debug
   'debug' => false,
 
+  //  Dev
+  'dev' => false,
+
   //  Homepage
   'home' => 'home',
 
