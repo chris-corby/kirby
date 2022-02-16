@@ -7,8 +7,8 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 
 const input =
   process.env.BUILD === 'polyfills'
-    ? 'assets/js/polyfills.js'
-    : 'assets/js/main.js';
+    ? 'public/assets/js/polyfills.js'
+    : 'public/assets/js/main.js';
 const sourcemap = process.env.BUILD === 'dev';
 
 //  Polyfills should be wrapped in an IIFE to stop infinite reloading (see https://github.com/zloirock/core-js/issues/627).

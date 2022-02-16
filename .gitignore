@@ -7,8 +7,8 @@ Icon
 # Temporary files
 # ---------------
 
-/media/*
-!/media/index.html
+/public/media/*
+!/public/media/index.html
 
 # -------------SECURITY-------------
 # NEVER publish these files via Git!
@@ -17,30 +17,36 @@ Icon
 # Cache Files
 # ---------------
 
-/site/cache/*
-!/site/cache/index.html
+/public/site/cache/*
+!/public/site/cache/index.html
 
 # Accounts
 # ---------------
 
-/site/accounts/*
-!/site/accounts/index.html
+/public/site/accounts/*
+!/public/site/accounts/index.html
 
 # Sessions
 # ---------------
 
-/site/sessions/*
-!/site/sessions/index.html
+/public/site/sessions/*
+!/public/site/sessions/index.html
 
 # License
 # ---------------
-/site/config/.license
+#/public/site/config/.license
 
 
 # Dev Files
 # ---------------
 *.sass-cache
 yarn-error.log
-assets/css/build
-assets/js/build
+/public/assets/css/build/*
+!/public/assets/css/build/.gitkeep
+/public/assets/js/build/*
+!/public/assets/js/build/.gitkeep
 node_modules
+
+# Composer Files
+# ---------------
+/vendor
