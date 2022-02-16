@@ -8,5 +8,16 @@
 
 .lazyloaded {
   opacity: 1;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s var(--ease-out-quad);
+}
+
+//  For no-js, always show everything in place
+.no-js .lazyload {
+  opacity: 1;
+  transform: none;
+}
+
+//  Don’t show images though, they will have fallbacks
+.no-js img.lazyload {
+  display: none;
 }

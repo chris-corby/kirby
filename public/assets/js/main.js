@@ -7,8 +7,6 @@ import 'lazysizes';
 //
 //  Base
 
-// import { KeyboardFocus } from './global/KeyboardFocus';
-
 //
 //  Components
 

@@ -1,17 +1,20 @@
 ::selection {
-  background-color: rgba($white, 0.99); // more opaque for Chrome
-  color: $black;
+  background-color: var(--selection);
+  color: var(--black);
   text-shadow: none;
 }
 
 html {
-  background-color: $white;
-  color: $black;
 }
 
 html,
 body {
   width: 100%;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
 }
 
 //

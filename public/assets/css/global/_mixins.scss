@@ -5,6 +5,7 @@
 //  The $direction parameter will default to 'min', but can be 'max'
 
 @mixin media-query($breakpoint, $direction: min) {
+  $min: $min-width;
   $small: $break--small;
   $medium: $break--medium;
   $large: $break--large;
@@ -13,6 +14,7 @@
   //  If a max-width query, take 1 off the breakpoints, prevents a min-width
   //  and max-width query being simultaneously active on 1 breakpoint
   @if $direction == "max" {
+    $min: ($min-width - 1);
     $small: ($small - 1);
     $medium: ($medium - 1);
     $large: ($large - 1);
@@ -21,7 +23,7 @@
 
   //  Min
   @if $breakpoint == min {
-    @media (#{$direction}-width: $min-width) {
+    @media (#{$direction}-width: $min) {
       @content;
     }
   }
@@ -122,7 +124,7 @@
 //  see: http://www.sassmeister.com/gist/7f22e44ace49b5124eec
 
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, $value * 0 + 1);
 }
 
 //
@@ -217,14 +219,18 @@
 //  use in the fluid mixin.
 $type-sizes: (
   h1: (
+    font-family: var(--sans),
+    font-weight: 400,
     font-size: 96px,
     line-height: 96px,
-    letter-spacing: 0px,
+    letter-spacing: 1px,
   ),
   h1-m: (
+    font-family: var(--sans),
+    font-weight: 400,
     font-size: 48px,
     line-height: 48px,
-    letter-spacing: 0px,
+    letter-spacing: 0.5px,
   ),
 );
 
@@ -243,6 +249,18 @@ $type-sizes: (
   $font-size--start: type-prop(font-size, $startSize);
   $line-height--start: type-prop(line-height, $startSize);
   $letter-spacing--start: type-prop(letter-spacing, $startSize);
+
+  $font-family: type-prop(font-family, $startSize);
+  $font-weight: type-prop(font-weight, $startSize);
+
+  //  Font-weight and family
+  @if ($font-family) {
+    font-family: $font-family;
+  }
+
+  @if ($font-weight) {
+    font-weight: $font-weight;
+  }
 
   //  If the $startBreak is min, set these values as the default.
   @if ($startBreak == min) {
@@ -311,7 +329,7 @@ $type-sizes: (
 //  Copy Styles
 //  @include copy-styles;
 
-@mixin copy-styles($highlight: red) {
+@mixin copy-styles($highlight: red, $full: true) {
   //  Links
   a {
     text-decoration: underline;
@@ -369,45 +387,6 @@ $type-sizes: (
     font-size: 2em;
   }
 
-  //  Media
-  figure,
-  video,
-  iframe {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-top: 1em;
-    margin-right: 0;
-    margin-bottom: 1em;
-    margin-left: 0;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-    max-height: 300px;
-    width: auto;
-    height: auto;
-    margin-top: 1em;
-    margin-right: auto;
-    margin-bottom: 1em;
-    margin-left: auto;
-  }
-
-  figure img {
-    margin-bottom: 0; // will be on the caption
-  }
-
-  figcaption {
-    margin-top: 0.5em;
-    max-width: 480px;
-  }
-
-  blockquote {
-    margin: 0;
-    padding: 0;
-  }
-
   p {
     margin-bottom: 1em;
   }
@@ -416,6 +395,56 @@ $type-sizes: (
   //  editor accidentally
   p:empty {
     display: none;
+  }
+
+  //  Full styles, including media elements
+  @if ($full) {
+    //  Media
+    figure,
+    video,
+    iframe {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 1em;
+      margin-right: 0;
+      margin-bottom: 1em;
+      margin-left: 0;
+    }
+
+    iframe {
+      aspect-ratio: 16/9;
+    }
+
+    iframe[width][height] {
+      aspect-ratio: attr(width) / attr(height);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: clamp(300px, 80vh, 400px);
+      width: auto;
+      height: auto;
+      margin-top: 1em;
+      margin-right: auto;
+      margin-bottom: 1em;
+      margin-left: auto;
+    }
+
+    figure img {
+      margin-bottom: 0; // will be on the caption
+    }
+
+    figcaption {
+      margin-top: 0.5em;
+      max-width: 480px;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
@@ -440,4 +469,15 @@ $type-sizes: (
   display: grid;
   grid-template-columns: repeat(var(--gridColumns), 1fr);
   gap: var(--gridGap);
+}
+
+//  Absolute Fill
+//  @include absolute-fill;
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
