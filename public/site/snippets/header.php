@@ -101,3 +101,10 @@ $meta_image_file = $meta_image->toFile();
     data-page="<?= $page->uid(); ?>"
     data-template="<?= $page_template; ?>"
   >
+
+    <?php
+    //  Dev
+    if ($kirby->option('debug')) {
+      snippet('Dev');
+    }
+    ?>
