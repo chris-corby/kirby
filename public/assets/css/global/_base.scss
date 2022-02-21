@@ -93,8 +93,12 @@ html.noscroll {
     z-index: 5;
   }
 
-  @include media-query(max) {
+  @include media-query(x-large) {
     z-index: 6;
+  }
+
+  @include media-query(max) {
+    z-index: 7;
   }
 }
 
