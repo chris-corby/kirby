@@ -11,8 +11,8 @@
   $large: $break--large;
   $x-large: $break--x-large;
 
-  //  If a max-width query, take 1 off the breakpoints, prevents a min-width
-  //  and max-width query being simultaneously active on 1 breakpoint
+  //  If this is a max-width query, take 1px off the breakpoint to prevent
+  //  a min and max query being simultaneously active.
   @if $direction == "max" {
     $min: ($min-width - 1);
     $small: ($small - 1);
